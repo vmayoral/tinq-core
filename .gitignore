@@ -1,0 +1,5 @@
+qeo-c/output/
+qeo-c/qeo-forwarder/*.tgz
+qeo-c/qeo-native/*.tgz
+qeo-c-import/miniupnpc/miniupnpcstrings.h
+
