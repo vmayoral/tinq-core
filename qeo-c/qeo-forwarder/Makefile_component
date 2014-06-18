@@ -1,7 +1,12 @@
 ifneq ($($(qeo-forwarder_INCLUDED)),1)
 
 override COMPONENT := qeo-forwarder
+ifndef IMPORT_DIR_SUFFIX
 override COMPONENT_SEARCH_PATH_PREFIX :=  $(projectdir/)../../*/%/Makefile_component
+else
+override COMPONENT_SEARCH_PATH_PREFIX :=  $(projectdir/)../../qeo-c-import-$(IMPORT_DIR_SUFFIX)/%/Makefile_component
+endif
+
 
 qeo-forwarder_INCLUDES := api/headers
 qeo-forwarder_CFLAGS   :=

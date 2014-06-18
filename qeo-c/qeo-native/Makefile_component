@@ -1,7 +1,11 @@
 ifneq ($($(qeo-native_INCLUDED)),1)
 
 override COMPONENT := technicolor.middleware.core.qeo-native
+ifndef IMPORT_DIR_SUFFIX
 override COMPONENT_SEARCH_PATH_PREFIX :=  $(projectdir/)../../*/%/Makefile_component
+else
+override COMPONENT_SEARCH_PATH_PREFIX :=  $(projectdir/)../../qeo-c-import-$(IMPORT_DIR_SUFFIX)/%/Makefile_component
+endif
 
 qeo-native_INCLUDES := api/headers $$(qeo-c-core_INCLUDES) $$(qeo-c-json-async_INCLUDES)
 qeo-native_CFLAGS   := -std=gnu99
