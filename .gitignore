@@ -2,3 +2,6 @@ qeo-c/output
 debian/dds
 debian/tinq-c
 debian/*.log
+debian/*.debhelper
+debian/*.substvars
+debian/files

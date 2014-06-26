@@ -9,12 +9,17 @@
 # Uncomment this to turn on verbose mode.
 export DH_VERBOSE=1
 
-QEO-C_SRC:="qeo-c/qeo-c"
-QEO-C-CORE_SRC:="qeo-c/qeo-c-core"
-QEO-C-UTIL_SRC:="qeo-c/qeo-c-util"
-TINQ-C_INSTALL:="debian/tinq-c"
+export qeo-c-util_MAJOR_VERSION := 0
+export qeo-c-core_MAJOR_VERSION := 0
+export qeo-management-client_MAJOR_VERSION := 0
+export qeo-openssl-engine-pkcs12_MAJOR_VERSION := 0
+
+QEO-C_SRC:=qeo-c/qeo-c
+DDS_SRC:=dds
+TINQ-C_INSTALL:=debian/tinq-c
+DDS_INSTALL:=debian/dds
 MAKE_CMD:=make -f Makefile_component
-MAKE_CMD_INSTALL:=${MAKE_CMD} libdir=/usr/lib install
+MAKE_CMD_INSTALL:=${MAKE_CMD} libdir=/usr/lib
 
 %:
 	dh $@ 
@@ -23,9 +28,19 @@ override_dh_auto_build:
 	cd ${QEO-C_SRC} && ${MAKE_CMD}
 
 override_dh_auto_install:
-	cd ${QEO-C_SRC} && ${MAKE_CMD_INSTALL} INSTALL_DIR=../../${TINQ-C_INSTALL}
-	cd ${QEO-C-CORE_SRC} && ${MAKE_CMD_INSTALL} INSTALL_DIR=../../${TINQ-C_INSTALL}
-	cd ${QEO-C-UTIL_SRC} && ${MAKE_CMD_INSTALL} INSTALL_DIR=../../${TINQ-C_INSTALL}
+	#install qeo
+	cd ${QEO-C_SRC} && ${MAKE_CMD_INSTALL} recursive_install INSTALL_DIR=../../${TINQ-C_INSTALL}
+	#cleanup
+	rm ${TINQ-C_INSTALL}/usr/local/bin/ddsfreeshm 
+	rmdir ${TINQ-C_INSTALL}/usr/local/bin
+	rmdir ${TINQ-C_INSTALL}/usr/local
+	rm ${TINQ-C_INSTALL}/usr/lib/libdds.so.0
+	#install dds
+	cd ${DDS_SRC} && ${MAKE_CMD_INSTALL} install INSTALL_DIR=../${DDS_INSTALL}
+	#cleanup
+	rm ${DDS_INSTALL}/usr/local/bin/ddsfreeshm 
+	rmdir ${DDS_INSTALL}/usr/local/bin
+	rmdir ${DDS_INSTALL}/usr/local
 
 #clean:
 #	echo "executing clean"
