@@ -1,0 +1,30 @@
+Source: tinq-c
+Priority: extra
+Maintainer: Tom Billiet <mouse256@gmail.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.2
+Section: libs
+Homepage: <insert the upstream URL, if relevant>
+#Vcs-Git: git://git.debian.org/collab-maint/tinq-c.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/tinq-c.git;a=summary
+
+#Package: tinq-c-dev
+#Section: libdevel
+#Architecture: any
+#Depends: tinq-cBROKEN (= ${binary:Version})
+#Description: <insert up to 60 chars description>
+# <insert long description, indented with spaces>
+
+Package: tinq-c
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>
+
+Package: dds
+Section: libs
+Architecture: any
+Description: DDS
+ Bla-bla
+
