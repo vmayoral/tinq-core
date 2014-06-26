@@ -9,12 +9,23 @@
 # Uncomment this to turn on verbose mode.
 export DH_VERBOSE=1
 
+QEO-C_SRC:="qeo-c/qeo-c"
+QEO-C-CORE_SRC:="qeo-c/qeo-c-core"
+QEO-C-UTIL_SRC:="qeo-c/qeo-c-util"
+TINQ-C_INSTALL:="debian/tinq-c"
+MAKE_CMD:=make -f Makefile_component
+MAKE_CMD_INSTALL:=${MAKE_CMD} libdir=/usr/lib install
+
 %:
 	dh $@ 
 
 override_dh_auto_build:
-	echo "HOEBA"
-	pwd
+	cd ${QEO-C_SRC} && ${MAKE_CMD}
+
+override_dh_auto_install:
+	cd ${QEO-C_SRC} && ${MAKE_CMD_INSTALL} INSTALL_DIR=../../${TINQ-C_INSTALL}
+	cd ${QEO-C-CORE_SRC} && ${MAKE_CMD_INSTALL} INSTALL_DIR=../../${TINQ-C_INSTALL}
+	cd ${QEO-C-UTIL_SRC} && ${MAKE_CMD_INSTALL} INSTALL_DIR=../../${TINQ-C_INSTALL}
 
 #clean:
 #	echo "executing clean"
