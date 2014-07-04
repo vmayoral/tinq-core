@@ -8,19 +8,19 @@ Homepage: <insert the upstream URL, if relevant>
 #Vcs-Git: git://git.debian.org/collab-maint/tinq-c.git
 #Vcs-Browser: http://git.debian.org/?p=collab-maint/tinq-c.git;a=summary
 
-#Package: tinq-c-dev
-#Section: libdevel
-#Architecture: any
-#Depends: tinq-cBROKEN (= ${binary:Version})
-#Description: <insert up to 60 chars description>
-# <insert long description, indented with spaces>
-
 Package: dds
 Section: libs
 Architecture: any
 #Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: DDS
  Bla-bla
+
+Package: dds-dev
+Section: libdevel
+Architecture: any
+Depends: dds (= ${binary:Version})
+Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>
 
 Package: tinq-c
 Section: libs
@@ -29,4 +29,11 @@ Depends: dds (= ${binary:Version})
 #Build-Depends: dds (= ${binary:Version})
 Description: tinq
  tinq long desc
+
+Package: tinq-c-dev
+Section: libdevel
+Architecture: any
+Depends: tinq-c (= ${binary:Version})
+Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>
 

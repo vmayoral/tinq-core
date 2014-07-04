@@ -1,6 +1,8 @@
 qeo-c/output
 debian/dds
+debian/dds-dev
 debian/tinq-c
+debian/tinq-c-dev
 debian/*.log
 debian/*.debhelper
 debian/*.substvars
