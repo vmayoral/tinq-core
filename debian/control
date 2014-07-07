@@ -4,36 +4,34 @@ Maintainer: Tom Billiet <mouse256@gmail.com>
 Build-Depends: debhelper (>= 8.0.0)
 Standards-Version: 3.9.2
 Section: libs
-Homepage: <insert the upstream URL, if relevant>
+Homepage: https://github.com/brunodebus/tinq-core
 #Vcs-Git: git://git.debian.org/collab-maint/tinq-c.git
 #Vcs-Browser: http://git.debian.org/?p=collab-maint/tinq-c.git;a=summary
 
 Package: dds
 Section: libs
 Architecture: any
-#Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: DDS
- Bla-bla
+Description: Distributed Data Service
+ The Data Distribution Service for Real-Time Systems (DDS) is an Object Management Group (OMG) machine to machine middleware "m2m" standard that aims to enable scalable, real-time, dependable, high performance and interoperable data exchanges between publishers and subscribers.
 
 Package: dds-dev
 Section: libdevel
 Architecture: any
 Depends: dds (= ${binary:Version})
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Description: Distributed Data Service
+ The Data Distribution Service for Real-Time Systems (DDS) is an Object Management Group (OMG) machine to machine middleware "m2m" standard that aims to enable scalable, real-time, dependable, high performance and interoperable data exchanges between publishers and subscribers
 
 Package: tinq-c
 Section: libs
 Architecture: any
 Depends: dds (= ${binary:Version})
-#Build-Depends: dds (= ${binary:Version})
-Description: tinq
- tinq long desc
+Description: publish-subscribe software framework
+ Tinq is a software framework that allows devices to easily exchange data with other devices on the same network based on a publish-subscribe paradigm
 
 Package: tinq-c-dev
 Section: libdevel
 Architecture: any
 Depends: tinq-c (= ${binary:Version})
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Description: publish-subscribe software framework
+ Tinq is a software framework that allows devices to easily exchange data with other devices on the same network based on a publish-subscribe paradigm
 
