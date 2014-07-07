@@ -24,13 +24,12 @@ DDS_INSTALL:=debian/dds
 DDS-DEV_INSTALL:=debian/dds-dev
 
 MAKE_CMD:=make -f Makefile_component
-MAKE_CMD_INSTALL:=${MAKE_CMD} prefix=usr
 
 %:
 	dh $@ 
 
 override_dh_auto_build:
-	cd ${QEO-C_SRC} && ${MAKE_CMD} all
+	cd ${QEO-C_SRC} && ${MAKE_CMD} prefix=usr INSTALL_DIR=install recursive_devel_install
 
 override_dh_auto_install:
 	#install qeo
@@ -51,6 +50,9 @@ override_dh_auto_install:
 	cp qeo-c/qeo-c/api/headers/qeo/api.h ${TINQ-C-DEV_INSTALL}/usr/include/qeo
 	cp qeo-c/qeo-c-util/api/headers/qeo/util_error.h ${TINQ-C-DEV_INSTALL}/usr/include/qeo
 	cp qeo-c/qeo-c-util/api/headers/qeo/device.h ${TINQ-C-DEV_INSTALL}/usr/include/qeo
+	#install qeo-c-dev pkgconfig
+	mkdir -p ${TINQ-C-DEV_INSTALL}/usr/lib/pkgconfig
+	cp qeo-c/qeo-c/install/usr/lib/pkgconfig/qeo-c.pc ${TINQ-C-DEV_INSTALL}/usr/lib/pkgconfig
 	#install qeo-c-dev libs
 	mkdir -p ${TINQ-C-DEV_INSTALL}/usr/lib
 	ln -s libqeoc.so.0 ${TINQ-C-DEV_INSTALL}/usr/lib/libqeoc.so
@@ -67,7 +69,10 @@ override_dh_auto_install:
 	cp dds/api/headers/dds/dds_error.h ${DDS-DEV_INSTALL}/usr/include/dds
 	#install dds-dev libs
 	mkdir -p ${DDS-DEV_INSTALL}/usr/lib
-	ln -s dds.so.0 ${DDS-DEV_INSTALL}/usr/lib/libdds.so
+	ln -s libdds.so.0 ${DDS-DEV_INSTALL}/usr/lib/libdds.so
+	#install dds pkgconfig
+	mkdir -p ${DDS-DEV_INSTALL}/usr/lib/pkgconfig
+	cp qeo-c/qeo-c/install/usr/lib/pkgconfig/dds.pc ${DDS-DEV_INSTALL}/usr/lib/pkgconfig
 
 #clean:
 #	echo "executing clean"

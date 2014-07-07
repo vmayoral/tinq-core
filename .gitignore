@@ -7,3 +7,4 @@ debian/*.log
 debian/*.debhelper
 debian/*.substvars
 debian/files
+qeo-c/qeo-c/install/
