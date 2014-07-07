@@ -1,7 +1,7 @@
 Source: tinq-c
 Priority: extra
 Maintainer: Tom Billiet <mouse256@gmail.com>
-Build-Depends: debhelper (>= 8.0.0)
+Build-Depends: debhelper (>= 8.0.0), pkg-config, libjansson-dev, libssl-dev, libcurl4-openssl-dev
 Standards-Version: 3.9.2
 Section: libs
 Homepage: https://github.com/brunodebus/tinq-core
@@ -24,7 +24,7 @@ Description: Distributed Data Service
 Package: tinq-c
 Section: libs
 Architecture: any
-Depends: dds (= ${binary:Version})
+Depends: dds (= ${binary:Version}), openssl, curl
 Description: publish-subscribe software framework
  Tinq is a software framework that allows devices to easily exchange data with other devices on the same network based on a publish-subscribe paradigm
 
