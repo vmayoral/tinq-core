@@ -41,7 +41,7 @@ override_dh_auto_install:
 	cp qeo-c/output/qeo-c-util/HOSTLINUX/libqeoutil.so ${TINQ-C_INSTALL}/usr/lib/libqeoutil.so.0
 	#install dds
 	mkdir -p ${DDS_INSTALL}/usr/lib
-	cp qeo-c/output/dds/HOSTLINUX/libdds.so ${TINQ-C_INSTALL}/usr/lib/libdds.so.0
+	cp qeo-c/output/dds/HOSTLINUX/libdds.so ${DDS_INSTALL}/usr/lib/libdds.so.0
 	#install qeo-c-dev headers
 	mkdir -p ${TINQ-C-DEV_INSTALL}/usr/include/qeo
 	cp qeo-c/qeo-c-core/api/headers/qeo/types.h ${TINQ-C-DEV_INSTALL}/usr/include/qeo
