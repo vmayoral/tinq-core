@@ -13,6 +13,9 @@ Tinq is a software framework that allows devices to easily exchange data with ot
 - Beyond the local network. Devices that are not in the local network can still exchange data with that network by connecting to a forwarder.
 
 ## Supported Platforms ##
+
+The open source version of Tinq is validated on Redhat Enterprice Linux version 6.1 and Ubuntu version 12.04 using GNU Make 3.81. Other distributions might be supported as well.
+
 Before building the source, make sure your system meets the following requirements:
 
 - A 32-bit or 64-bit Linux system.
