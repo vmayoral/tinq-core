@@ -9,3 +9,5 @@ debian/*.debhelper
 debian/*.substvars
 debian/files
 qeo-c/qeo-c/install/
+qeo-c-import/miniupnpc/miniupnpcstrings.h
+qeo-c/qeo-forwarder/install/
