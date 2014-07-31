@@ -1,8 +1,9 @@
 qeo-c/output
-debian/dds
-debian/dds-dev
 debian/tinq-c
 debian/tinq-c-dev
+debian/tinq-dds-dev
+debian/tinq-dds
+debian/tinq-forwarder
 debian/*.log
 debian/*.debhelper
 debian/*.substvars

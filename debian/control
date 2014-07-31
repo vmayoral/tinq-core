@@ -8,7 +8,7 @@ Homepage: https://github.com/brunodebus/tinq-core
 #Vcs-Git: git://git.debian.org/collab-maint/tinq-c.git
 #Vcs-Browser: http://git.debian.org/?p=collab-maint/tinq-c.git;a=summary
 
-Package: dds
+Package: tinq-dds
 Section: libs
 Architecture: any
 Description: Distributed Data Service
@@ -17,10 +17,10 @@ Description: Distributed Data Service
  aims to enable scalable, real-time, dependable, high performance and
  interoperable data exchanges between publishers and subscribers.
 
-Package: dds-dev
+Package: tinq-dds-dev
 Section: libdevel
 Architecture: any
-Depends: dds (= ${binary:Version})
+Depends: tinq-dds (= ${binary:Version})
 Description: Distributed Data Service
  The Data Distribution Service for Real-Time Systems (DDS) is an Object
  Management Group (OMG) machine to machine middleware "m2m" standard that
@@ -30,7 +30,7 @@ Description: Distributed Data Service
 Package: tinq-c
 Section: libs
 Architecture: any
-Depends: dds (= ${binary:Version}), openssl, curl, libc
+Depends: tinq-dds (= ${binary:Version}), openssl, curl
 Description: publish-subscribe software framework
  Tinq is a software framework that allows devices to easily exchange data
  with other devices on the same network based on a publish-subscribe paradigm
@@ -42,4 +42,11 @@ Depends: tinq-c (= ${binary:Version})
 Description: publish-subscribe software framework
  Tinq is a software framework that allows devices to easily exchange data
  with other devices on the same network based on a publish-subscribe paradigm
+
+Package: tinq-forwarder
+Section: libs
+Architecture: any
+Depends: tinq-c (= ${binary:Version})
+Description: publish-subscribe software framework internet proxy
+  Utility to enable tinq traffic over the internet
 

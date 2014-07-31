@@ -16,12 +16,14 @@ export qeo-management-client_MAJOR_VERSION := 0
 export qeo-openssl-engine-pkcs12_MAJOR_VERSION := 0
 
 QEO-C_SRC:=qeo-c/qeo-c
+QEO-FORWARDER_SRC:=qeo-c/qeo-forwarder
 DDS_SRC:=dds
 
 TINQ-C_INSTALL:=debian/tinq-c
 TINQ-C-DEV_INSTALL:=debian/tinq-c-dev
-DDS_INSTALL:=debian/dds
-DDS-DEV_INSTALL:=debian/dds-dev
+DDS_INSTALL:=debian/tinq-dds
+DDS-DEV_INSTALL:=debian/tinq-dds-dev
+TINQ-FORWARDER_INSTALL:=debian/tinq-forwarder
 
 MAKE_CMD:=make -f Makefile_component
 
@@ -30,6 +32,7 @@ MAKE_CMD:=make -f Makefile_component
 
 override_dh_auto_build:
 	cd ${QEO-C_SRC} && ${MAKE_CMD} prefix=usr INSTALL_DIR=install recursive_devel_install
+	cd ${QEO-FORWARDER_SRC} && ${MAKE_CMD} prefix=usr INSTALL_DIR=install recursive_devel_install
 
 override_dh_auto_install:
 	#install qeo
@@ -73,16 +76,11 @@ override_dh_auto_install:
 	#install dds pkgconfig
 	mkdir -p ${DDS-DEV_INSTALL}/usr/lib/pkgconfig
 	cp qeo-c/qeo-c/install/usr/lib/pkgconfig/dds.pc ${DDS-DEV_INSTALL}/usr/lib/pkgconfig
+	#install forwarder
+	mkdir -p ${TINQ-FORWARDER_INSTALL}/usr/bin
+	mkdir -p ${TINQ-FORWARDER_INSTALL}/usr/lib
+	cp qeo-c/qeo-forwarder/install/usr/bin/qeo-forwarder ${TINQ-FORWARDER_INSTALL}/usr/bin
+	ln -s qeo-forwarder ${TINQ-FORWARDER_INSTALL}/usr/bin/tinq-forwarder
+	cp qeo-c/qeo-forwarder/install/usr/lib/libqeoforwarder.so ${TINQ-FORWARDER_INSTALL}/usr/lib
+	cp qeo-c/qeo-forwarder/install/usr/lib/libminiupnpc.so ${TINQ-FORWARDER_INSTALL}/usr/lib
 
-#clean:
-#	echo "executing clean"
-#	pwd
-#
-#build:
-#	echo "executing build"
-#	pwd
-#
-#binary:
-#	echo "executing binary"
-#	pwd
-#
